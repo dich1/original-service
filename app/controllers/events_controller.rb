@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   end
   
   def join
-    @event = Event.find(params[:id])
+    
   end
   
   def update
