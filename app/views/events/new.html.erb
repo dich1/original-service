@@ -1,0 +1,9 @@
+<%= form_for(Event.new) do |f| %>
+  <%# 入力コントロール %>
+  場所:
+  <%= f.text_field :place %>
+  
+  時間:
+  <%= f.text_field :time %>
+  <%= f.submit "Create Event", class: "btn btn-large btn-primary" %>
+<% end %>

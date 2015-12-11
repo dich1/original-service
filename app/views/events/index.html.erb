@@ -1,0 +1,17 @@
+<% @events.each do |event| %>
+(<%= link_to "edit" , edit_event_path(event) %>
+ <%= link_to "destroy" , event , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+ )
+  <br>
+<%= link_to event_path(event) do %>
+<div class="col-sm-3 panel panel-default">
+  <div class="panel-heading">
+    <%= event.place %>
+  </div>
+  
+  <div class="panel-body">
+      <span class="label label-info"><%= event.time %></span>
+  </div>
+</div>
+<% end %>
+<% end %>
