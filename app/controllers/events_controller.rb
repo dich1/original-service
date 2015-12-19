@@ -33,12 +33,17 @@ class EventsController < ApplicationController
     
   end
   
+  def attend
+    @event = Event.find(params[:id])
+    @event.attendees.create(user_id:current_user.id)
+    flash[:success] = "イベントに参加しています"
+    redirect_to event_path(@event)
+  end
+  
   def update
     if @event.update(event_params)
     flash[:success] = "イベントを保存しました"
-    flash[:success] = "イベントに参加しています"
     redirect_to events_path
-    redirect_to event_path
     else
     render 'edit'
     end

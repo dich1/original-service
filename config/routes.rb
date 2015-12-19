@@ -21,4 +21,11 @@ Rails.application.routes.draw do
       get :followers
     end
   end
+
+  resource :events do
+    member do
+      get :attend
+      get :unattend
+    end
+  end
 end
