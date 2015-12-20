@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :events do
+  resources :events do
     member do
       get :attend
       get :unattend
