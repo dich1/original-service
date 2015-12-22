@@ -36,11 +36,12 @@ class EventsController < ApplicationController
   def attend
     if logged_in?
     @event = Event.find(params[:id])
-    @event.attendees.create(user_id:current_user.id)
-    flash[:success] = "イベントに参加しています"
-    redirect_to event_path(@event)
+    @attendee = @event.attendees.create(user_id:current_user.id)
+    @count = @event.attendees.size
+    
+    
     else
-    render 'sessions/new'
+    redirect_to login_path
     end
   end
   
