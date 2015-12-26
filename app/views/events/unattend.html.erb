@@ -1,1 +1,16 @@
-<%= link_to "UnJoin", unattend_event_path(@event), class: "btn btn-lg btn-primary", remote: true%>
+<div class="panel-heading">
+<% if @event.attendees.any? %>  
+  <%= @event.attendees.count %>
+<% end %>
+  <%= @event.place %>
+</div>
+  
+<div class="panel-body">
+  <span class="label label-info"><%= @event.time %></span>
+</div>
+
+<% if logged_in? %>
+  <div id="event-attend" >
+    <%= link_to "join", attend_event_path(@event), class: "btn btn-lg btn-primary", remote: true%>
+  </div>
+<% end %>

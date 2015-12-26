@@ -4,18 +4,18 @@ class Event < ActiveRecord::Base
   has_many :microposts
   
   # イベントに参加する
-  def participant(other_user)
-    attendees.find_or_create_by(user_id:other_user.id)
+  def participant(current_user)
+    attendees.find_or_create_by(user_id:current_user.id)
   end
 
   # 参加しているイベントから抜ける
-  def nonparticipant(other_user)
-    attendees.find_by(user_id:other_user.id).destroy
+  def nonparticipant(current_user)
+    attendees.find_by(user_id:current_user.id).destroy
   end
 
   # あるイベントに参加しているかどうか？
-  def participant?(other_event)
-    attendee_events.include?(other_event)
+  def participant?(current_event)
+    attendee_events.include?(current_event)
   end
 
   def feed_items

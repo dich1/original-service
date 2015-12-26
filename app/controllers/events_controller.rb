@@ -39,10 +39,15 @@ class EventsController < ApplicationController
     @attendee = @event.attendees.create(user_id:current_user.id)
     @count = @event.attendees.size
     
-    
     else
     redirect_to login_path
     end
+  end
+  
+  def unattend
+    @event = Event.find(params[:id])
+    @count = @event.attendees.size
+    @attendee = @event.attendees.find_by(user_id:current_user.id).destroy
   end
   
   def update
