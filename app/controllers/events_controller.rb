@@ -9,7 +9,7 @@ class EventsController < ApplicationController
     if logged_in?
       @events = Event.new
     else
-      flash[:error] = "ログインしてください"
+      flash[:warning] = "ログインしてください"
       redirect_to login_path
     end
   end
@@ -61,8 +61,8 @@ class EventsController < ApplicationController
   
   def destroy
     @event.destroy
-    flash[:werning] = "イベントを削除しました"
-    redirect_to event_path
+    flash[:warning] = "イベントを削除しました"
+    redirect_to events_path
   end
   
   private
