@@ -1,14 +1,22 @@
+
+
+    
+<% @events.each_with_index do |event, i| %>
+
+<% if i % 4 == 0 %>
 <div class="row">
-<% @events.each do |event| %>
+<% end %>
 (<%= link_to "edit" , edit_event_path(event) %>
  <%= link_to "destroy" , event , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
  )
-  <br>
+ <br />
+
 <%= link_to event_path(event) do %>
 
   <div class="col-sm-3 panel panel-default">
     <div class="panel-heading">
       <%= event.place %>
+      
     </div>
   
     <div class="panel-body">
